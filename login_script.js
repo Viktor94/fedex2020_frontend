@@ -16,8 +16,9 @@ form.addEventListener('submit', e => {
     },
     body: JSON.stringify(login)
   })
-  .then((response) => {
-    console.log(response)
+  .then((resp) => resp.json())
+  .then((data) => {
+    console.log(data)
   });
   form.reset();
   // window.location = URL + 'index.html';
