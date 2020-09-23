@@ -1,6 +1,5 @@
 'use strict';
 
-//const URL = 'http://localhost:8080/'
 const URL = 'https://cors-anywhere.herokuapp.com/https://fedex-backend.herokuapp.com/';
 const form = document.querySelector('form');
 
@@ -18,8 +17,9 @@ form.addEventListener('submit', e => {
   })
   .then((resp) => resp.json())
   .then((data) => {
-    console.log(data)
+    window.localStorage.setItem('jwt', data.token)
+    console.log(data.token)
   });
   form.reset();
-  // window.location = URL + 'index.html';
+  window.location = URL + 'index.html';
   });
