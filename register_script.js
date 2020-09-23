@@ -15,9 +15,15 @@ form.addEventListener('submit', e => {
         },
         body: JSON.stringify(login)
     })
-    .then((resp) => resp.json())
-    .then((data) => {
-        console.log(data)
+    .then((resp) => {
+        if (resp.status === 200) {
+            window.location = URL + 'login.html';
+            form.reset();
+        }else {
+            throw 'FAIL'
+        }
+    })
+    .catch(function(error) {
+        console.log(error)
     });
-    form.reset();
 })
