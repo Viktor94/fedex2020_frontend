@@ -58,7 +58,7 @@ const refreshPrograms = () => {
 
 const refresh = () => {
   refreshPrograms();
-  setTimeout(refresh, 60000);
+  setTimeout(refresh, 120000);
 }
 
 refresh();

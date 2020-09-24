@@ -10,11 +10,12 @@ const makePost = (data) => {
   let studentNameP = makeNode('p');
   let programsP = makeNode('p');
   studentNameP.innerText = `Student name: ${data.firstName} ${data.lastName}`;
+  programsP.innerText = 'Suspicious apps: ';
   if (data.programs.length === 0) {
     programsP.innerText = 'No suspicious apps';
   } else {
     data.programs.forEach(e => {
-      programsP.innerText = 'Suspicious apps: ' + e;
+      programsP.innerText += ` ${e.programName}`;
     });
   };
   if (data.suspicious) {
