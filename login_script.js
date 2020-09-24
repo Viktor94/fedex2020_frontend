@@ -22,5 +22,5 @@ form.addEventListener('submit', e => {
     console.log(localStorage.getItem('jwt'))
   });
   form.reset();
-  window.location = '/home/benebp/GreenFoxAcademy/fedex2020_frontend/main.html';
+  window.location = 'main.html';
   });

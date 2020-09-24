@@ -52,7 +52,7 @@ const refreshStudents = () => {
 
 const refresh = () => {
   refreshStudents();
-  setTimeout(refresh, 10000);
+  setTimeout(refresh, 120000);
 }
 
 refresh();
