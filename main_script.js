@@ -9,7 +9,7 @@ const makePost = (data) => {
   let div = makeNode('div');
   let studentNameP = makeNode('p');
   let programsP = makeNode('p');
-  studentNameP.innerText = 'Student name: ' + data.firstName + data.lastName;
+  studentNameP.innerText = `Student name: ${data.firstName} ${data.lastName}`;
   if (data.programs.length === 0) {
     programsP.innerText = 'No suspicious apps';
   } else {
@@ -36,17 +36,17 @@ const refreshStudents = () => {
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data)
-      // studentsDIV.innerHTML = '';
-      // if (data.length === 0) {
-      //   studentsDIV.innerText = 'No students'
-      // };
-      // let ul = makeNode('ul');
-      // studentsDIV.appendChild(ul);
-      // data.forEach(e => {
-      //   let li = makeNode('li');
-      //   li.appendChild(makePost(data));
-      //   ul.appendChild(li);
-      //   });
+      studentsDIV.innerHTML = '';
+      if (data.length === 0) {
+        studentsDIV.innerText = 'No students'
+      };
+      let ul = makeNode('ul');
+      studentsDIV.appendChild(ul);
+      for (let datas of data) {
+        let li = makeNode('li');
+        li.appendChild(makePost(datas));
+        ul.appendChild(li);
+        };
       });
 }
 
