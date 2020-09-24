@@ -15,8 +15,8 @@ const makePost = (data) => {
   let buttonsPressedP = makeNode('p');
   studentNameP.innerText = `Student name: ${data.firstName} ${data.lastName}`;
   programsP.innerText = 'Suspicious programs: ';
-  cpuUsagesP.innerText = 'TOP programs by CPU usage:\n';
-  memoryUsagesP.innerText = 'TOP programs by memory usage:\n';
+  cpuUsagesP.innerText = 'TOP programs by CPU usage:<br />';
+  memoryUsagesP.innerText = 'TOP programs by memory usage:<br />';
   kppmP.innerText = `Keys pressed per minute: ${data.kppm}`;
   buttonsPressedP.innerText = `Buttons pressed per minute: ${data.buttonsPressed}`;
   if (data.programs.length === 0) {
@@ -32,10 +32,10 @@ const makePost = (data) => {
     div.appendChild(connectedP);
   };
   data.programCpuUsages.forEach(e => {
-    cpuUsagesP.innerText += ` ${e.name} - ${e.cpuUsage}%\n`;
+    cpuUsagesP.innerText += ` ${e.name} - ${e.cpuUsage}%<br />`;
   });
   data.programMemoryUsages.forEach(e => {
-    memoryUsagesP.innerText += ` ${e.name} - ${e.memory}MB\n`;
+    memoryUsagesP.innerText += ` ${e.name} - ${e.memory}MB<br />`;
   });
   div.appendChild(studentNameP);
   div.appendChild(programsP);
