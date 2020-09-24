@@ -11,6 +11,7 @@ form.addEventListener('submit', e => {
   fetch(URL + 'user-management/login', {
     method: 'POST',
     headers: {
+      'X-Requested-With': '',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(login)
