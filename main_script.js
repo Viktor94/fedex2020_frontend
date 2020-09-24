@@ -7,17 +7,28 @@ const studentsDIV = document.getElementById('students');
 
 const makePost = (data) => {
   let div = makeNode('div');
-  let studentP = makeNode('p');
+  let studentNameP = makeNode('p');
   let programsP = makeNode('p');
-  studentP.innerText = 'Student name: ' + data.studentName;
-  programsP.innerText = 'Suspicious apps: ' + data.appList;
-  div.appendChild(studentP);
+  studentNameP.innerText = 'Student name: ' + data.firstName + data.lastName;
+  if (data.programs.length === 0) {
+    programsP.innerText = 'No suspicious apps';
+  } else {
+    data.programs.forEach(e => {
+      programsP.innerText = 'Suspicious apps: ' + e;
+    });
+  };
+  if (data.suspicious) {
+    let connectedP = makeNode('p');
+    connectedP.innerText = 'Student not connected';
+    div.appendChild(connectedP);
+  }
+  div.appendChild(studentNameP);
   div.appendChild(programsP);
   return div;
 };
 
 const refreshStudents = () => {
-  fetch(URL + 'programs', {
+  fetch(URL + 'student-management/students', {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('jwt')
     }
@@ -25,24 +36,23 @@ const refreshStudents = () => {
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data)
-      studentsDIV.innerHTML = '';
-      if (data.length === 0) {
-        studentsDIV.innerText = 'No students with suspicious apps'
-      };
-      let ul = makeNode('ul');
-      studentsDIV.appendChild(ul);
-      data.forEach(e => {
-        let li = makeNode('li');
-        li.innerText = e.id;
-        // li.appendChild(makePost(post));
-        ul.appendChild(li);
-        });
+      // studentsDIV.innerHTML = '';
+      // if (data.length === 0) {
+      //   studentsDIV.innerText = 'No students'
+      // };
+      // let ul = makeNode('ul');
+      // studentsDIV.appendChild(ul);
+      // data.forEach(e => {
+      //   let li = makeNode('li');
+      //   li.appendChild(makePost(data));
+      //   ul.appendChild(li);
+      //   });
       });
 }
 
 const refresh = () => {
   refreshStudents();
-  setTimeout(refresh, 5000);
+  setTimeout(refresh, 10000);
 }
 
 refresh();
