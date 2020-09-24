@@ -9,20 +9,24 @@ const makePost = (data) => {
   let div = makeNode('div');
   let programNameP = makeNode('p');
   let allowButton = makeNode('button');
+  let changeStatusOfProgram = false;
   programNameP.innerText = `Program name: ${data.programName}`;
   if (data.isAllowed) {
     allowButton.innerText = 'Allowed'
   } else {
     allowButton.innerText = 'Suspicious'
+    changeStatusOfProgram = true
   }
   div.appendChild(programNameP);
   div.appendChild(allowButton);
   allowButton.addEventListener('click', () => {
-    fetch(URL + `/program-management/programs/${data.id}`, {
+    fetch(URL + `program-management/programs/${data.id}`, {
       method: 'PUT',
       headers: {
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('jwt')
       },
+      body: JSON.stringify({ isAllowed: changeStatusOfProgram })
     })
     .then(() => refreshPrograms());
   });
