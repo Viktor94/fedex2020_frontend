@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+         crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/2b597ed3c8.js" crossorigin="anonymous"></script>
   <title>Programs</title>
 </head>
 <body>
-  <main>
-    <a href="main.html">Check the students here</a>
-    <h1>Programs</h1>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand active" href="main.html"><i class="fas fa-users"></i> Green Brothel<span class="sr-only">(current)</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="main.html">Students</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="programs.html">Manage programs</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <main>
+        <div class="container">
+
+            <div class="jumbotron jumbotron-fluid mt-3 pr-4 pl-4">
+                <div class="container">
+                <h1 class="display-4"><i class="fas fa-tablet-alt"></i> Programs</h1>
+                <p class="lead">Manage programs here.</p>
+                </div>
+            </div>
+            <div class="jumbotron jumbotron-fluid mt-3 pr-4 pl-4">
+            <div id="programs"></div>
+            </div>
+        </div>
+
+
+
+    
     <div id="programs"></div>
   </main>
   <script src="programs_script.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"></script>
 </body>
 </html>
