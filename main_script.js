@@ -9,22 +9,40 @@ const makePost = (data) => {
   let div = makeNode('div');
   let studentNameP = makeNode('p');
   let programsP = makeNode('p');
+  let cpuUsagesP = makeNode('p');
+  let memoryUsagesP = makeNode('p');
+  let kppmP = makeNode('p');
+  let buttonsPressedP = makeNode('p');
   studentNameP.innerText = `Student name: ${data.firstName} ${data.lastName}`;
-  programsP.innerText = 'Suspicious apps: ';
+  programsP.innerText = 'Suspicious programs: ';
+  cpuUsagesP.innerText = 'TOP programs by CPU usage: ';
+  memoryUsagesP.innerText = 'TOP programs by memory usage: ';
+  kppmP.innerText = `Keys pressed per minute: ${data.kppm}`;
+  buttonsPressedP.innerText = `Buttons pressed per minute: ${data.buttonsPressed}`;
   if (data.programs.length === 0) {
     programsP.innerText = 'No suspicious apps';
   } else {
     data.programs.forEach(e => {
-      programsP.innerText += ` ${e.programName}`;
+      programsP.innerText += ` ${e.programName},`;
     });
   };
   if (data.suspicious) {
     let connectedP = makeNode('p');
-    connectedP.innerText = 'Student not connected';
+    connectedP.innerText = 'Student not connected!';
     div.appendChild(connectedP);
-  }
+  };
+  data.programCpuUsages.forEach(e => {
+    cpuUsagesP.innerText += ` ${e.name} - ${e.cpuUsage}%,`;
+  });
+  data.programMemoryUsages.forEach(e => {
+    memoryUsagesP.innerText += ` ${e.name} - ${e.memory}MB,`;
+  });
   div.appendChild(studentNameP);
   div.appendChild(programsP);
+  div.appendChild(cpuUsagesP);
+  div.appendChild(memoryUsagesP);
+  div.appendChild(kppmP);
+  div.appendChild(buttonsPressedP);
   return div;
 };
 
@@ -49,11 +67,11 @@ const refreshStudents = () => {
         ul.appendChild(li);
         };
       });
-}
+};
 
 const refresh = () => {
   refreshStudents();
   setTimeout(refresh, 120000);
-}
+};
 
 refresh();
