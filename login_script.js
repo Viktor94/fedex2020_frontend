@@ -8,7 +8,7 @@ form.addEventListener('submit', e => {
   const username = document.getElementById('username').value;
   const pwd = document.getElementById('password').value;
   const login = { username: username, password: pwd };
-  fetch(URL + 'login', {
+  fetch(URL + 'user-management/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -17,9 +17,10 @@ form.addEventListener('submit', e => {
   })
   .then((resp) => resp.json())
   .then((data) => {
+    localStorage.clear();
     window.localStorage.setItem('jwt', data.token)
-    console.log(data.token)
+    console.log(localStorage.getItem('jwt'))
   });
   form.reset();
-  window.location = URL + 'index.html';
+  window.location = 'main.html';
   });
