@@ -20,10 +20,10 @@ form.addEventListener('submit', e => {
             window.location = 'login.html';
             form.reset();
         }else {
-            throw 'FAIL'
+            throw Error(resp.statusText)
         }
     })
     .catch(function(error) {
-        console.log(error)
+        console.log(error);
     });
 })

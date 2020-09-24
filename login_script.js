@@ -16,12 +16,20 @@ form.addEventListener('submit', e => {
     },
     body: JSON.stringify(login)
   })
-  .then((resp) => resp.json())
+  .then((resp) => {
+    if (!resp.ok) {
+      throw Error(resp.statusText)
+    }
+    return resp.json();
+  })
   .then((data) => {
     localStorage.clear();
     window.localStorage.setItem('jwt', data.token)
     console.log(localStorage.getItem('jwt'))
+    window.location = 'main.html';
+  })
+  .catch(function(error) {
+    console.log(error);
   });
   form.reset();
-  window.location = 'main.html';
-  });
+});
