@@ -17,10 +17,15 @@ const makePost = (data) => {
       programsP.innerText = 'Suspicious apps: ' + e;
     });
   };
+  let dot = document.createElement('span');
+  dot.setAttribute('class', 'dot');
+  let sus = makeNode('p');
+  sus.appendChild(dot);
+  div.appendChild(sus);
   if (data.suspicious) {
-    let connectedP = makeNode('p');
-    connectedP.innerText = 'Student not connected';
-    div.appendChild(connectedP);
+    dot.setAttribute('class', 'dot red')
+  } else {
+    dot.setAttribute('class', 'dot green')
   }
   div.appendChild(studentNameP);
   div.appendChild(programsP);
