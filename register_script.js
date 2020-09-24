@@ -17,7 +17,7 @@ form.addEventListener('submit', e => {
     })
     .then((resp) => {
         if (resp.status === 200) {
-            window.location = URL + 'login.html';
+            window.location = 'login.html';
             form.reset();
         }else {
             throw 'FAIL'
