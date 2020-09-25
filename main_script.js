@@ -13,7 +13,6 @@ const makePost = (data) => {
   let memoryUsagesP = makeNode('p');
   let kppmP = makeNode('p');
   let buttonsPressedP = makeNode('p');
-  let allAllowed = true;
   studentNameP.innerText = `Student name: ${data.firstName} ${data.lastName}`;
   programsP.innerText = 'Suspicious programs: ';
   cpuUsagesP.innerText = 'TOP programs by CPU usage: ';
@@ -24,13 +23,7 @@ const makePost = (data) => {
     programsP.innerText = 'No suspicious apps';
   } else {
     data.programs.forEach(e => {
-      if (!e.isAllowed) {
-        programsP.innerText += ` ${e.programName},`;
-        allAllowed = false;
-      }
-      if (allAllowed) {
-        programsP.innerText = 'No suspicious apps';
-      }
+      programsP.innerText += ` ${e.programName},`;
     });
   };
   if (data.suspicious) {
