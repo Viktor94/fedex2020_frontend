@@ -13,17 +13,24 @@ const makePost = (data) => {
   let memoryUsagesP = makeNode('p');
   let kppmP = makeNode('p');
   let buttonsPressedP = makeNode('p');
+  let allAllowed = true;
   studentNameP.innerText = `Student name: ${data.firstName} ${data.lastName}`;
   programsP.innerText = 'Suspicious programs: ';
-  cpuUsagesP.innerText = 'TOP programs by CPU usage:\r\n';
-  memoryUsagesP.innerText = 'TOP programs by memory usage:\r\n';
+  cpuUsagesP.innerText = 'TOP programs by CPU usage: ';
+  memoryUsagesP.innerText = 'TOP programs by memory usage: ';
   kppmP.innerText = `Keys pressed per minute: ${data.kppm}`;
   buttonsPressedP.innerText = `Buttons pressed per minute: ${data.buttonsPressed}`;
   if (data.programs.length === 0) {
     programsP.innerText = 'No suspicious apps';
   } else {
     data.programs.forEach(e => {
-      programsP.innerText += ` ${e.programName},`;
+      if (!e.isAllowed) {
+        programsP.innerText += ` ${e.programName},`;
+        allAllowed = false;
+      }
+      if (allAllowed) {
+        programsP.innerText = 'No suspicious apps';
+      }
     });
   };
   if (data.suspicious) {
@@ -32,10 +39,10 @@ const makePost = (data) => {
     div.appendChild(connectedP);
   };
   data.programCpuUsages.forEach(e => {
-    cpuUsagesP.innerText += ` ${e.name} - ${e.cpuUsage}%\r\n`;
+    cpuUsagesP.innerText += ` ${e.name} - ${e.cpuUsage}%, `;
   });
   data.programMemoryUsages.forEach(e => {
-    memoryUsagesP.innerText += ` ${e.name} - ${e.memory}MB\r\n`;
+    memoryUsagesP.innerText += ` ${e.name} - ${e.memory}MB, `;
   });
   div.appendChild(studentNameP);
   div.appendChild(programsP);
